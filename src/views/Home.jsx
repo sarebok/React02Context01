@@ -1,20 +1,32 @@
 import Gallery from "../components/Gallery";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 
 const Home = () => {
-  async function getPhotos() {
+  const { setImages, images } = useContext(AppContext);
+  async function getPhotos(signal) {
     try {
-      const response = await fetch("/photos.json");
+      const response = await fetch("/photos.json", signal);
       const data = await response.json();
       const photosData = data.photos;
-      console.log(photosData);
+      console.log("photosdata", photosData);
+      setImages(photosData);
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    getPhotos();
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    getPhotos(signal);
+    console.log("imgaes", images);
+    //cleanup
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
