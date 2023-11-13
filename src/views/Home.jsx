@@ -4,13 +4,12 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
 const Home = () => {
-  const { setImages, images } = useContext(AppContext);
+  const { setImages } = useContext(AppContext);
   async function getPhotos(signal) {
     try {
       const response = await fetch("/photos.json", signal);
       const data = await response.json();
       const photosData = data.photos;
-      console.log("photosdata", photosData);
       setImages(photosData);
     } catch (error) {
       console.log(error);
@@ -22,7 +21,6 @@ const Home = () => {
     const signal = controller.signal;
 
     getPhotos(signal);
-    console.log("imgaes", images);
     //cleanup
     return () => {
       controller.abort();

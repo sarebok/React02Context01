@@ -12,7 +12,6 @@ h1 {
   margin-bottom: 0;
 }
 
-
 /* Navbar */
 a {
   text-decoration: none;
@@ -63,4 +62,8 @@ a {
 
 .p-3 {
   padding: 30px;
+}
+
+.icon-heart-back {
+  background-color: #43a047;
 }

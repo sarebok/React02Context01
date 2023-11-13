@@ -4,9 +4,9 @@ export const AppContext = createContext();
 
 const ContextProvider = ({ children }) => {
   const [images, setImages] = useState([]);
-  const [liked, setLiked] = useState(false);
+  const [likedImages, setLikedImages] = useState([]);
 
-  const state = { images, setImages, liked, setLiked };
+  const state = { images, setImages, likedImages, setLikedImages };
 
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
 };
