@@ -1,8 +1,10 @@
+import LikedGallery from "../components/LikedGallery";
+
 const Favorites = () => {
   return (
-    <div>
-      <h1>Fotos favoritas</h1>
-      <div className="p-3 gallery grid-columns-4"></div>
+    <div className="App">
+      <h1>Natural Pic</h1>
+      <LikedGallery />
     </div>
   );
 };
